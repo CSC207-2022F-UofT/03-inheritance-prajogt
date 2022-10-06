@@ -9,6 +9,7 @@ public class CrossbodyBag extends Bag{
     int numStraps;
     public CrossbodyBag(String color, int capacity, int numStraps){
         super(color, capacity);
+        this.numStraps = numStraps;
     }
 
     int getNumberOfStraps() {return this.numStraps;}

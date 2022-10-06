@@ -63,16 +63,12 @@ public abstract class Bag {
      *       This method should return true if the item was added
      *       and false otherwise.
      */
-    public void addItem(String item) {
+    public boolean addItem(String item) {
         if (this.capacity > this.numberOfContents) {
-            String[] tempArray = new String[this.numberOfContents + 1];
-            for (int i = 0; i < this.numberOfContents; i++) {
-                tempArray[i] = this.contents[i];
-            }
-        tempArray[this.numberOfContents + 1] = item;
-        this.contents = tempArray;
-        this.numberOfContents++;
-        }
+            this.contents[this.numberOfContents] = item;
+            this.numberOfContents++;
+            return true;
+        } else {return false;}
     }
 
 
@@ -87,14 +83,9 @@ public abstract class Bag {
      * @return returns the removed item
      */
     public String popItem() {
-        String[] tempArray = new String[this.numberOfContents - 1];
-        for (int i = 0; i < this.numberOfContents - 1; i++) {
-            tempArray[i] = this.contents[i];
-        }
         String toReturn = this.contents[this.numberOfContents - 1];
-        this.contents = tempArray;
+        this.contents[this.numberOfContents - 1] = null;
         this.numberOfContents--;
-
         return toReturn;
     }
 
